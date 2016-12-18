@@ -27,3 +27,12 @@ export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
+alias  bi='bundle install'
+alias  gcmp='git checkout master && git pull'
+alias  rdbdcms='rails db:drop && rails db:create && rails db:migrate && rails db:seed'
+alias  rdbm='rails db:migrate'
+alias  rs='rails s'
+alias  fs='foreman start -f Procfile.dev'
+
+export NVM_DIR="/home/doudou/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
