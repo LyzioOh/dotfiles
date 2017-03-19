@@ -41,8 +41,9 @@ alias  cdms='cd client/app/bundles/MySkate/'
 alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butterfly.server.py | exit'
 alias  rsl='touch -f ~/Téléchargements/rails.log && rails s > ~/Téléchargements/rails.log & google-chrome /home/doudou/Téléchargements/rails.log'
 alias  ct='rm -r -f ~/Téléchargements/ && mkdir ~/Téléchargements/'
-
-
+alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias '"
+alias  czsh='nano ~/.zshrc && exec zsh'
+alias  rzsh='exec zsh'
 export NVM_DIR="/home/doudou/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -50,5 +51,3 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #Add rvm starting script
 source ~/.rvm/scripts/rvm
-
-
