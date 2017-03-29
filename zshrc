@@ -33,6 +33,15 @@ alias  rdbdcms='rails db:drop && rails db:create && rails db:migrate && rails db
 alias  rdbm='rails db:migrate'
 alias  rs='rails s'
 alias  fs='foreman start -f Procfile.dev'
+
+#alias  cd directory
+alias  cd-ee='cd ~/eetancelin'
+alias  cd-h='cd ~' #cd home
+alias  cd-gr='cd $(git rev-parse --show-cdup)' #cd git root
+alias  cd-t='cd ~/Téléchargements'
+
+
+#alias  git command
 alias  gs='git status'
 alias  gaa='git add .'
 alias  gca='git commit .'
@@ -42,8 +51,12 @@ alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butter
 alias  rsl='touch -f ~/Téléchargements/rails.log && rails s > ~/Téléchargements/rails.log & google-chrome /home/doudou/Téléchargements/rails.log'
 alias  ct='rm -r -f ~/Téléchargements/ && mkdir ~/Téléchargements/'
 alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias '"
-alias  czsh='nano ~/.zshrc && exec zsh'
+
+# alias Zsh management
+alias  czsh='nano ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles'
 alias  rzsh='exec zsh'
+
+# NVM and RVM
 export NVM_DIR="/home/doudou/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
