@@ -39,12 +39,13 @@ alias  cd-ee='cd ~/eetancelin'
 alias  cd-h='cd ~' #cd home
 alias  cd-gr='cd $(git rev-parse --show-cdup)' #cd git root
 alias  cd-t='cd ~/Téléchargements'
-
+alias  cd-df='cd ~/eetancelin/dotfiles' #cd dotfiles
 
 #alias  git command
 alias  gs='git status'
 alias  gaa='git add .'
 alias  gca='git commit .'
+alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push ' 
 alias  cdroot='cd $(git rev-parse --show-cdup)'
 alias  cdms='cd client/app/bundles/MySkate/'
 alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butterfly.server.py | exit'
@@ -53,7 +54,7 @@ alias  ct='rm -r -f ~/Téléchargements/ && mkdir ~/Téléchargements/'
 alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias '"
 
 # alias Zsh management
-alias  czsh='nano ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles'
+alias  czsh='nano ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles && git commit . -m 'alias improving' && git push'
 alias  rzsh='exec zsh'
 
 # NVM and RVM
