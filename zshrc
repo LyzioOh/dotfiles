@@ -34,6 +34,7 @@ alias  rdbm='rails db:migrate'
 alias  rs='rails s'
 alias  fs='foreman start -f Procfile.dev'
 
+
 #alias  cd directory
 alias  cd-ee='cd ~/eetancelin'
 alias  cd-h='cd ~' #cd home
