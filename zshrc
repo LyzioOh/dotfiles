@@ -32,37 +32,44 @@ alias  gcmp='git checkout master && git pull'
 alias  rdbdcms='rails db:drop && rails db:create && rails db:migrate && rails db:seed'
 alias  rdbm='rails db:migrate'
 alias  rs='rails s'
+alias  rr='rails routes'
 alias  fs='foreman start -f Procfile.dev'
-
+alias  rc='rails console'
 
 #alias  cd directory
 alias  cd-ee='cd ~/eetancelin'
 alias  cd-h='cd ~' #cd home
 alias  cd-gr='cd $(git rev-parse --show-cdup)' #cd git root
-alias  cd-t='cd ~/Téléchargements'
+alias  cd-t='cd ~/Downloads'
 alias  cd-df='cd ~/eetancelin/dotfiles' #cd dotfiles
 
 #alias  git command
 alias  gs='git status'
 alias  gaa='git add .'
 alias  gca='git commit .'
-alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push ' 
-alias  cdroot='cd $(git rev-parse --show-cdup)'
-alias  cdms='cd client/app/bundles/MySkate/'
+alias  gaca='git add . && git commit .'
+alias  gd='git diff'
+alias  gc.='git checkout .'
+alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push '
 alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butterfly.server.py | exit'
 alias  rsl='touch -f ~/Téléchargements/rails.log && rails s > ~/Téléchargements/rails.log & google-chrome /home/doudou/Téléchargements/rails.log'
-alias  ct='rm -r -f ~/Téléchargements/ && mkdir ~/Téléchargements/'
-alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias '"
+
+#alias workstation management
+alias  ct='rm -r -f ~/Downloads/*'
 
 # alias Zsh management
 alias  czsh='nano ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles && git commit . -m 'alias improving' && git push'
 alias  rzsh='exec zsh'
+alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias '"
 
 # NVM and RVM
-export NVM_DIR="/home/doudou/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #Add rvm starting script
 source ~/.rvm/scripts/rvm
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+export PATH="$PATH : « yarn global bin  »"

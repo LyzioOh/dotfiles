@@ -48,4 +48,6 @@
   mergeoptions = --no-edit
 [user]
 	email = etancelin.edouard@gmail.com
-	name = Edouard Etancelin
+	name = 16Q45T
+[url "https://github.com/"]
+	insteadOf = git://github.com/
