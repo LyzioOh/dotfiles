@@ -66,6 +66,7 @@ alias  gc.='git checkout .'
 alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push '
 alias  gcmp='git checkout master && git pull'
 alias  grh1= 'git reset --hard HEAD^1'
+alias  git-count= 'git count-objects -vH'
 
 ##
 ## Zsh
