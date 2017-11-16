@@ -1,0 +1,243 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+
+'.source.js.jsx':
+
+  'React functionnal Component':
+    'prefix': 'r-fc'
+    'body': """
+      import React from 'react';
+
+      // Components
+
+      const ${1:MyComponent} = (props) => (
+        <div>
+          {props.test}
+        </div>
+      );
+      export default ${1};
+    """
+  'React Connected Component':
+    'prefix': 'r-cc'
+    'body': """
+      import React from 'react';
+      import { connect } from 'react-redux';
+      import { bindActionCreators } from 'redux';
+
+      class ${1:ContainerComponent} extends React.Component {
+        render () {
+          return (
+            <div>
+            </div>
+          );
+        }
+      }
+
+      // Component connection
+      function mapStateToProps(state) (
+          cars: state.cars,
+        );
+      }
+
+      function mapDispatchToProps(dispatch) (
+        bindActionCreators({ fetchProducts }, dispatch);
+      )
+
+      export default connect(null, null)(${1});
+    """
+  'React Statefull Component':
+    'prefix': 'r-sc'
+    'body': """
+      import React from 'react';
+
+      class ${1:ContainerComponent} extends React.Component {
+        render () {
+          return (
+            <div>
+            </div>
+          );
+        }
+      }
+      export default ${1};
+    """
+  'Redux import action':
+    'prefix': 'rd-ia'
+    'body': """
+      import { ${1:action} } from '../actions/index';
+    """
+  'React import component':
+    'prefix': 'r-ic'
+    'body': """
+      import ${1:component} from './${1:component}';
+    """
+  'React import cousin component':
+    'prefix': 'r-icc'
+    'body': """
+      import ${1:component} from '../components/${2:component-lc}';
+    """
+  'React div':
+    'prefix': 'r-d'
+    'body': """
+      <div className="${1:className}">
+        ${2:content}
+      </div>
+    """
+  'React img':
+    'prefix': 'r-img'
+    'body': """
+      <img src="${1:src}" alt="${2:alt}" />
+    """
+  'Html Tag':
+    'prefix': 'ht'
+    'body': """
+      <${1:tag}>
+      </${1:tag}>
+    """
+  'Html Tag with class':
+    'prefix': 'htwc'
+    'body': """
+      <${1:tag} className=${2:class} >
+      </${1:tag}>
+    """
+  'Redux Reducer':
+    'prefix': 'rd-r'
+    'body': """
+
+    export default (state = {}, action) =>  {
+      switch (action.type) {
+        case "UPDATE_TAGS_TREE":
+          return state;
+        default:
+          return state;
+      }
+    };
+    """
+  'Redux action definition':
+    'prefix': 'rd-ad'
+    'body': """
+    const ${1:action} = ${2:action};
+    """
+  'React Construtor':
+    'prefix': 'r-cons'
+    'body': """
+    constructor(props){
+      super(props);
+      this.state = {}
+    }
+    """
+  'React Set State':
+    'prefix': 'r-ss'
+    'body': """
+    this.setState({${1:state}})
+    """
+  'React Prop Type':
+    'prefix': 'r-pt'
+    'body': """
+    import PropTypes from 'prop-types';
+    """
+  'React Handle user Input Change':
+    'prefix': 'r-huic'
+    'body': """
+    handleChange = (e) => {
+      this.setState({userInput: e.target.value})
+    }
+    """
+  'React User Input':
+    'prefix': 'r-ui'
+    'body': """
+    <input
+      onChange={this.handleChange}
+      value={userInput}
+    />
+    """
+  'React Log Props And State':
+    'prefix': 'r-lps'
+    'body': """
+    {console.log(this.constructor.name, "Props", this.props)}
+    {console.log(this.constructor.name, "State", this.state)}
+    """
+  'React Perf renderDate':
+    'prefix': 'r-perf-rd'
+    'body': """
+      const date = new Date()
+      const dateStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()} `
+    """
+  'JS Log Object Key':
+    'prefix': 'js-lok'
+    'body': """
+      console.log(${1:logTitle},Object.keys(${2:object}))
+    """
+  'React Should Component Update':
+    'prefix': 'r-perf-scu'
+    'body': """
+    shouldComponentUpdate = (nextProps, nextState) =>(
+      (nextProps !== this.props)
+      || (nextState !== this.state)
+    )
+    """
+  'React Manage child Instance':
+    'prefix': 'r-mci'
+    'body': """
+    addChildInstance = (instance) => {
+      this.tagInputInstances.push(instance)
+    }
+
+    removeChildInstance = (instance) => {
+      this.tagInputInstances = this.tagInputInstances.filter(x => x !== instance )
+    }
+    """
+  'React This Props':
+    'prefix': 'r-tp'
+    'body': """
+    this.props.
+    """
+  'React This State':
+    'prefix': 'r-ts'
+    'body': """
+    this.state.
+    """
+  'React This Set State':
+    'prefix': 'r-tss'
+    'body': """
+    toDisplay= (scroll) => 4 + Math.floor((150 + scroll) / 150)
+
+    onScroll = (scroll) => {
+      const displayed = this.state.toDisplay
+      const toDisplay = this.toDisplay(scroll)
+      if ( toDisplay > displayed ) {
+        this.setState({toDisplay: this.toDisplay(scroll) })
+      }
+    }
+
+    componentDidMount = () => {
+      this.marqsListElm.addEventListener('scroll', (e) => this.onScroll(e.target.scrollTop)  )
+    }
+    """
+  'Js Log and Pass':
+    'prefix': 'js-lp'
+    'body': """
+    const logAndPass = (x) => {
+      console.log(x)
+      return(x)
+    }
+    """
