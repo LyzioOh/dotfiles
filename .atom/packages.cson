@@ -1,0 +1,11 @@
+packages: [
+  "atom-html-preview"
+  "busy-signal"
+  "intentions"
+  "language-javascript-jsx"
+  "linter"
+  "linter-eslint"
+  "linter-ui-default"
+  "package-sync"
+  "Remote-FTP"
+]
