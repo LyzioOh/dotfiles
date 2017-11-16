@@ -10,7 +10,7 @@ import stripJsonComments from 'strip-json-comments';
 import chokidar from 'chokidar';
 import ignore from 'ignore';
 import sshConfig from 'ssh-config';
-import { multipleHostsEnabled, getObject, hasProject, logger, traverseTree, validateConfig, resolveHome } from './helpers';
+import { multipleHostsEnabled, getObject, hasProject, logger, traverseTree, validateConfig, resolveHome, mkdirSyncRecursive } from './helpers';
 import Directory from './directory';
 import Progress from './progress';
 import FTP from './connectors/ftp';
@@ -82,7 +82,7 @@ export default (function INIT() {
 
           self.files = watchDataFormatted.slice();
 
-          atom.notifications.addInfo('Remote FTP: Added watch listeners', {
+          atom.notifications.addInfo('Remote FTP: Added watch listeners.', {
             dismissable: false,
           });
           self.watcher = watcher;
@@ -90,7 +90,7 @@ export default (function INIT() {
         removeListeners() {
           if (self.watcher != null) {
             self.watcher.close();
-            atom.notifications.addInfo('Remote FTP: Stopped watch listeners', {
+            atom.notifications.addInfo('Remote FTP: Stopped watch listeners.', {
               dismissable: false,
             });
           }
@@ -188,7 +188,7 @@ export default (function INIT() {
 
             self.setProjectName();
           } catch (e) {
-            atom.notifications.addError('Could not process `.ftpconfig`', {
+            atom.notifications.addError('Could not process `.ftpconfig`.', {
               detail: e,
               dismissable: false,
             });
@@ -259,9 +259,9 @@ export default (function INIT() {
         self.projectPath = projectPath;
         return projectPath;
       }
-      atom.notifications.addError('Remote FTP: Could not get project path', {
+      atom.notifications.addError('Remote FTP: Could not get project path.', {
         dismissable: false, // Want user to report error so don't let them close it
-        detail: `Please report this error if it occurs. Multiple Hosts is ${multipleHostsEnabled()}`,
+        detail: `Please report this error if it occurs. Multiple Hosts is ${multipleHostsEnabled()}.`,
       });
       return false;
     }
@@ -461,16 +461,18 @@ export default (function INIT() {
       });
 
       self.connector.on('closed', (action) => {
-        self.disconnect();
+        if (self.status === 'NOT_CONNECTED') return;
+
         self.status = 'NOT_CONNECTED';
         self.emit('closed');
+
         atom.notifications.addInfo('Remote FTP: Connection closed', {
           dismissable: false,
         });
 
-        if (action === 'RECONNECT') {
-          self.connect(true);
-        }
+        self.disconnect(() => {
+          if (action === 'RECONNECT') self.connect(true);
+        });
       });
 
       self.connector.on('ended', () => {
@@ -498,7 +500,7 @@ export default (function INIT() {
       }
     }
 
-    disconnect() {
+    disconnect(cb) {
       const self = this;
 
       if (self.connector) {
@@ -520,6 +522,7 @@ export default (function INIT() {
       self.emit('disconnected');
       self.status = 'NOT_CONNECTED';
 
+      if (typeof cb === 'function') cb();
 
       return self;
     }
@@ -620,6 +623,13 @@ export default (function INIT() {
 
     download(remote, recursive, callback) {
       const self = this;
+
+      self.checkIgnore(remote);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(remote)) {
+        self._next();
+        return self;
+      }
+
       self.onceConnected(() => {
         self._enqueue((progress) => {
           self.connector.get(remote, recursive, (...args) => {
@@ -636,6 +646,13 @@ export default (function INIT() {
 
     upload(local, callback) {
       const self = this;
+
+      self.checkIgnore(local);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(local)) {
+        self._next();
+        return self;
+      }
+
       self.onceConnected(() => {
         self._enqueue((progress) => {
           self.connector.put(local, (...args) => {
@@ -652,6 +669,13 @@ export default (function INIT() {
 
     syncRemoteFileToLocal(remote, callback) {
       const self = this;
+
+      self.checkIgnore(remote);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(remote)) {
+        self._next();
+        return self;
+      }
+
       // verify active connection
       if (self.status === 'CONNECTED') {
         self._enqueue(() => {
@@ -683,11 +707,11 @@ export default (function INIT() {
 
       if (!remote) return;
 
-      self.download(remote, true, (err) => {
-        if (err) {
-          console.error(err);
-        }
-      });
+      self.checkIgnore(remote);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(remote)) {
+        self._next();
+        return;
+      }
 
       self._enqueue(() => {
         const local = self.toLocal(remote);
@@ -697,6 +721,19 @@ export default (function INIT() {
             if (typeof callback === 'function') callback.apply(null, [err]);
 
             return;
+          }
+
+          // Create folder if no exists in local
+          mkdirSyncRecursive(local);
+
+          // remove ignored remotes
+          self.checkIgnore(remote);
+          if (self.ignoreFilter) {
+            for (let i = remotes.length - 1; i >= 0; i--) {
+              if (self.ignoreFilter.ignores(remotes[i].name)) {
+                remotes.splice(i, 1); // remove from list
+              }
+            }
           }
 
           traverseTree(local, (locals) => {
@@ -711,8 +748,6 @@ export default (function INIT() {
 
               if (!remoteOne) return error();
 
-              if (remoteOne.type === 'd') return n();
-
               const toLocal = self.toLocal(remoteOne.name);
               loc = null;
 
@@ -723,9 +758,9 @@ export default (function INIT() {
                 }
               }
 
-                // Download only if not present on local or size differ
+              // Download only if not present on local or size differ
               if (!loc || remoteOne.size !== loc.size) {
-                self.connector.get(remoteOne.name, false, () => n());
+                self.connector.get(remoteOne.name, true, () => n());
               } else {
                 n();
               }
@@ -749,6 +784,13 @@ export default (function INIT() {
 
     syncLocalFileToRemote(local, callback) {
       const self = this;
+
+      self.checkIgnore(local);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(local)) {
+        self._next();
+        return;
+      }
+
       // verify active connection
       if (self.status === 'CONNECTED') {
         // progress
@@ -771,6 +813,13 @@ export default (function INIT() {
 
     syncLocalDirectoryToRemote(local, callback) {
       const self = this;
+
+      self.checkIgnore(local);
+      if (self.ignoreFilter && self.ignoreFilter.ignores(local)) {
+        self._next();
+        return;
+      }
+
       // verify active connection
       if (self.status === 'CONNECTED') {
         self._enqueue(() => {
@@ -805,7 +854,6 @@ export default (function INIT() {
                 if (!nLocal) {
                   return error();
                 }
-                if (nLocal.type === 'd') return n();
 
                 const toRemote = self.toRemote(nLocal.name);
                 nRemote = null;

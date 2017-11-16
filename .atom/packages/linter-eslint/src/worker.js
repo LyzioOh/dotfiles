@@ -1,76 +1,124 @@
 'use babel'
 
-// Note: 'use babel' doesn't work in forked processes
+/* global emit */
 
 import Path from 'path'
-import { create } from 'process-communication'
 import { FindCache, findCached } from 'atom-linter'
 import * as Helpers from './worker-helpers'
 import isConfigAtHomeRoot from './is-config-at-home-root'
 
 process.title = 'linter-eslint helper'
 
-const ignoredMessages = [
-  // V1
-  'File ignored because of your .eslintignore file. Use --no-ignore to override.',
-  // V2
-  'File ignored because of a matching ignore pattern. Use --no-ignore to override.',
-  // V2.11.1
-  'File ignored because of a matching ignore pattern. Use "--no-ignore" to override.',
-  // supress warning that the current file is ignored by eslint by default
-  'File ignored by default.  Use a negated ignore pattern (like "--ignore-pattern \'!<relative'
-    + '/path/to/filename>\'") to override.',
-  'File ignored by default. Use "--ignore-pattern \'!node_modules/*\'" to override.',
-  'File ignored by default. Use "--ignore-pattern \'!bower_components/*\'" to override.',
-]
+const fixableRules = new Set()
+let sendRules = false
 
-function shouldBeReported(problem) {
-  return !ignoredMessages.includes(problem.message)
+/**
+ * Modifies the closed-over fixableRules variable when called _if_ there are
+ * newly-loaded fixable rules or fixable rules are removed from the set of all
+ * loaded rules, according to the eslint `linter` instance that is passed in.
+ *
+ * @param  {Object} linter eslint 'linter' instance
+ * @return {void}
+ */
+function updateFixableRules(linter) {
+  if (linter === undefined) {
+    // ESLint < v4 doesn't support this property
+    return
+  }
+
+  // Build a set of fixable rules based on the rules loaded in the provided linter
+  const currentRules = new Set()
+  linter.getRules().forEach((props, rule) => {
+    if (
+      Object.prototype.hasOwnProperty.call(props, 'meta') &&
+      Object.prototype.hasOwnProperty.call(props.meta, 'fixable')
+    ) {
+      currentRules.add(rule)
+    }
+  })
+
+  // Unless something has changed, we won't need to send updated set of fixableRules
+  sendRules = false
+
+  // Check for new fixable rules added since the last time we sent fixableRules
+  const newRules = new Set(currentRules)
+  fixableRules.forEach(rule => newRules.delete(rule))
+  if (newRules.size > 0) {
+    sendRules = true
+  }
+
+  // Check for fixable rules that were removed since the last time we sent fixableRules
+  const removedRules = new Set(fixableRules)
+  currentRules.forEach(rule => removedRules.delete(rule))
+  if (removedRules.size > 0) {
+    sendRules = true
+  }
+
+  if (sendRules) {
+    // Rebuild fixableRules
+    fixableRules.clear()
+    currentRules.forEach(rule => fixableRules.add(rule))
+  }
 }
 
 function lintJob({ cliEngineOptions, contents, eslint, filePath }) {
   const cliEngine = new eslint.CLIEngine(cliEngineOptions)
-
-  return typeof contents === 'string'
-    ? cliEngine.executeOnText(contents, filePath)
-    : cliEngine.executeOnFiles([filePath])
+  const report = cliEngine.executeOnText(contents, filePath)
+  // Use the internal (undocumented) `linter` instance attached to the cliEngine
+  // to check the loaded rules (including plugin rules) and update our list of fixable rules.
+  updateFixableRules(cliEngine.linter)
+  return report
 }
 
-function fixJob({ cliEngineOptions, eslint, filePath }) {
-  const report = lintJob({ cliEngineOptions, eslint, filePath })
+function fixJob({ cliEngineOptions, contents, eslint, filePath }) {
+  const report = lintJob({ cliEngineOptions, contents, eslint, filePath })
 
   eslint.CLIEngine.outputFixes(report)
 
-  if (!report.results.length || !report.results[0].messages.filter(shouldBeReported).length) {
+  if (!report.results.length || !report.results[0].messages.length) {
     return 'Linter-ESLint: Fix complete.'
   }
   return 'Linter-ESLint: Fix attempt complete, but linting errors remain.'
 }
 
-create().onRequest('job', ({ contents, type, config, filePath, projectPath, rules }, job) => {
-  if (config.disableFSCache) {
-    FindCache.clear()
-  }
+module.exports = async () => {
+  process.on('message', (jobConfig) => {
+    const {
+      contents, type, config, filePath, projectPath, rules, emitKey
+    } = jobConfig
+    if (config.disableFSCache) {
+      FindCache.clear()
+    }
 
-  const fileDir = Path.dirname(filePath)
-  const eslint = Helpers.getESLintInstance(fileDir, config, projectPath)
-  const configPath = Helpers.getConfigPath(fileDir)
-  const relativeFilePath = Helpers.getRelativePath(fileDir, filePath, config)
+    const fileDir = Path.dirname(filePath)
+    const eslint = Helpers.getESLintInstance(fileDir, config, projectPath)
+    const configPath = Helpers.getConfigPath(fileDir)
+    const noProjectConfig = (configPath === null || isConfigAtHomeRoot(configPath))
+    if (noProjectConfig && config.disableWhenNoEslintConfig) {
+      emit(emitKey, { messages: [] })
+      return
+    }
 
-  const cliEngineOptions = Helpers.getCLIEngineOptions(
-    type, config, rules, relativeFilePath, fileDir, configPath
-  )
+    const relativeFilePath = Helpers.getRelativePath(fileDir, filePath, config, projectPath)
 
-  const noProjectConfig = (configPath === null || isConfigAtHomeRoot(configPath))
-  if (noProjectConfig && config.disableWhenNoEslintConfig) {
-    job.response = []
-  } else if (type === 'lint') {
-    const report = lintJob({ cliEngineOptions, contents, eslint, filePath })
-    job.response = report.results.length ? report.results[0].messages.filter(shouldBeReported) : []
-  } else if (type === 'fix') {
-    job.response = fixJob({ cliEngineOptions, eslint, filePath })
-  } else if (type === 'debug') {
-    const modulesDir = Path.dirname(findCached(fileDir, 'node_modules/eslint') || '')
-    job.response = Helpers.findESLintDirectory(modulesDir, config)
-  }
-})
+    const cliEngineOptions = Helpers
+      .getCLIEngineOptions(type, config, rules, relativeFilePath, fileDir, configPath)
+
+    let response
+    if (type === 'lint') {
+      const report = lintJob({ cliEngineOptions, contents, eslint, filePath })
+      response = {
+        messages: report.results.length ? report.results[0].messages : []
+      }
+      if (sendRules) {
+        response.fixableRules = Array.from(fixableRules.keys())
+      }
+    } else if (type === 'fix') {
+      response = fixJob({ cliEngineOptions, contents, eslint, filePath })
+    } else if (type === 'debug') {
+      const modulesDir = Path.dirname(findCached(fileDir, 'node_modules/eslint') || '')
+      response = Helpers.findESLintDirectory(modulesDir, config, projectPath)
+    }
+    emit(emitKey, response)
+  })
+}
