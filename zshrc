@@ -78,7 +78,9 @@ alias  git-count= 'git count-objects -vH'
 alias  czsh='atom ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles && git commit . -m 'alias improving' && git push'
 alias  rzsh='exec zsh'
 alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias \|##'"
-alias  gcdf="git -C ~/eetancelin/dotfiles commit .   "
+alias  gcdf="git -C ~/eetancelin/dotfiles commit .  "
+alias  gsdf="git -C ~/eetancelin/dotfiles status "
+alias  gpdf="git -C ~/eetancelin/dotfiles push "
 
 ##
 ## Other
