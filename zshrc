@@ -46,6 +46,11 @@ alias  cd-bf='cd ~/eetancelin/Bookmark-Finder-Global/bookmark-finder-webpack'
 alias  cd-di-ui='cd ~/eetancelin/data-impact/ui/'
 alias  cd-drafts='cd ~/eetancelin/drafts'
 alias  cd-tt='cd ~/eetancelin/Technical-test'
+alias  cd-ss='cd ~/eetancelin/stylesheets'
+
+## atom
+alias  atm-o='atom -a .'
+
 
 ## Yarn and Webpack
 alias wds='webpack-dev-server'
@@ -53,7 +58,7 @@ alias yi='yarn install'
 alias ys='yarn start'
 
 ## Git command
-alias  gs='echo ""; echo "Git Status"; git status ; echo ""; echo "Stash List" ; git stash list '
+alias  gs='echo ""; echo "Git Status"; git status ; echo ""; echo "Stash List" ; git stash list; eslint ./src  '
 alias  gst='git stash'
 alias  gstl='git stash list'
 alias  gstd='git stash drop'
@@ -73,6 +78,7 @@ alias  git-count= 'git count-objects -vH'
 alias  czsh='atom ~/.zshrc && exec zsh && cd ~/eetancelin/dotfiles && git commit . -m 'alias improving' && git push'
 alias  rzsh='exec zsh'
 alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias \|##'"
+alias  gcdf="git -C ~/eetancelin/dotfiles commit .   "
 
 ##
 ## Other

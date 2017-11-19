@@ -1,5 +1,8 @@
 "*":
   core:
+    disabledPackages: [
+      "linter-eslint"
+    ]
     telemetryConsent: "limited"
   editor:
     softWrap: true
@@ -7,5 +10,6 @@
     userId: "8ba66e1f-9349-45b1-81b9-5a93159ce6f4"
   "linter-ui-default":
     panelHeight: 102
+    showPanel: true
   "tree-view":
     hideVcsIgnoredFiles: true
