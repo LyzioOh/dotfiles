@@ -93,7 +93,7 @@
   'React import cousin component':
     'prefix': 'r-icc'
     'body': """
-      import ${1:component} from '../components/${2:component-lc}';
+      import ${1:component} from '../components/${1:component}';
     """
   'React div':
     'prefix': 'r-d'
@@ -240,4 +240,23 @@
       console.log(x)
       return(x)
     }
+    """
+  'React import from props':
+    'prefix': 'r-ifp'
+    'body': """
+      const { ${1:logTitle} } = this.props
+    """
+  'Redux Connect Component':
+    'prefix': 'rd-cc'
+    'body': """
+    import { connect } from 'react-redux';
+    // Component connection
+    const mapStateToProps = (state) =>  ({
+        cars: state.cars,
+      });
+    const mapDispatchToProps = (dispatch) => (
+      bindActionCreators({ fetchProducts }, dispatch);
+    )
+
+    export default connect(null, null)(${1});
     """

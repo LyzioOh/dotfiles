@@ -11,5 +11,7 @@
   "linter-ui-default":
     panelHeight: 102
     showPanel: true
+  "status-bar":
+    isVisible: false
   "tree-view":
     hideVcsIgnoredFiles: true

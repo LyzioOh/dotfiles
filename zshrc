@@ -58,7 +58,7 @@ alias yi='yarn install'
 alias ys='yarn start'
 
 ## Git command
-alias  gs='echo ""; echo "Git Status"; git status ; echo ""; echo "Stash List" ; git stash list; eslint ./src  '
+alias  gs='echo ""; echo "Git Status"; git status ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
 alias  gst='git stash'
 alias  gstl='git stash list'
 alias  gstd='git stash drop'
