@@ -16,6 +16,9 @@ alias  fs='foreman start -f Procfile.dev'
 alias  rc='rails console'
 alias  bi='bundle install'
 alias  rsf='ps aux | grep puma'
+## Clean Postgree
+alias clean-ps='rm -r -f /usr/local/var/postgres/postmaster.pid'
+
 ##
 alias  cl-dd="ls ~/Downloads | rm -r -f"
 ## Directory
@@ -29,6 +32,7 @@ alias  cd-drafts='cd ~/eetancelin/drafts'
 alias  cd-tt='cd ~/eetancelin/Technical-test'
 alias  cd-ss='cd ~/eetancelin/stylesheets'
 alias  cd-mlr='cd ~/eetancelin/mailoop-g/mailoop'
+alias  cd-ml='cd ~/code/mailoop'
 alias  cd-mlf='cd ~/eetancelin/mailoop-g/mailoop-feedback'
 alias  cd-mld='cd ~/eetancelin/mailoop-g/mailoop-deconnexion'
 
@@ -42,7 +46,7 @@ alias ys='yarn start'
 alias loc-wp='./node_modules/webpack/bin/webpack.js'
 
 ## Git command
-alias  gs='echo ""; echo "Git Status"; git status ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
+alias  gs='echo ""; echo "Git Status"; git status -s ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
 alias  gst='git stash'
 alias  gstl='git stash list'
 alias  gstd='git stash drop'
@@ -56,6 +60,7 @@ alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push '
 alias  gcmp='git checkout master && git pull'
 alias  grh1= 'git reset --hard HEAD^1'
 alias  git-count= 'git count-objects -vH'
+alias  git-lc='git diff HEAD^'
 alias  g-dmb='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 # Git Set upstream and Push
 alias g-sup="git push -u origin HEAD"
