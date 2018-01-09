@@ -22,6 +22,7 @@
   d = !git --no-pager diff
   dt  = difftool
   stat = !git --no-pager diff --stat
+  aa = add --all
 
   # Clean merged branches
   sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
@@ -37,7 +38,16 @@
 
   # Removes a file from the index
   unstage = reset HEAD --
-
+  head = !git r -1
+  h = !git head
+  hp = "!. ~/.githelpers && show_git_head"
+  l = "!. ~/.githelpers && pretty_git_log"
+  r = !GIT_NO_PAGER=1 git l -30
+  ra = !git r --all
+  la = !git l --all
+  b = "!. ~/.githelpers && pretty_git_branch"
+  bs = "!. ~/.githelpers && pretty_git_branch_sorted"
+  ds = diff --stat=160,120
 [help]
   autocorrect = 1
 
@@ -48,7 +58,7 @@
   mergeoptions = --no-edit
 [user]
 	email = etancelin.edouard@gmail.com
-	name = 16Q45T
+	name = Edouard
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 [filter "lfs"]
