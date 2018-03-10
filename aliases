@@ -44,6 +44,7 @@ alias wds='webpack-dev-server'
 alias yi='yarn install'
 alias ys='yarn start'
 alias loc-wp='./node_modules/webpack/bin/webpack.js'
+alias yr='yarn run'
 
 ## Git command
 alias  gs='echo ""; echo "Git Status"; git status -s ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
