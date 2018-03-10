@@ -34,8 +34,6 @@ export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 
-(cd "$HOME/code/mailoop" ; find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \; )
-
 # NVM and RVM
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -50,5 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$PATH : « yarn global bin  »"
 export PATH="$PATH :./node_modules/.bin"
-export EDITOR='nano'
+export EDITOR='vim'
+export EETANCELIN="$HOME/code/eetancelin"
+export MAILOOP="$HOME/code/mailoop"
+export PATH="$PATH :$MAILOOP/scripts"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
