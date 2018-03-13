@@ -2,40 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
+        "raw": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
-        "spec": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
+        "rawSpec": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
+        "spec": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/apm-install-dir-1171016-82473-11kdlld"
+      "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/apm-install-dir-118210-2030-14wr0m5.6rc2384cxr"
     ]
   ],
-  "_from": "../d-1171016-82473-uveyp4/package.tgz",
-  "_id": "go-to-line@0.32.1",
+  "_from": "../d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
+  "_id": "go-to-line@0.33.0",
   "_inCache": true,
-  "_installable": true,
   "_location": "/go-to-line",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
+    "raw": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
-    "spec": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
+    "rawSpec": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
+    "spec": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1171016-82473-uveyp4/package.tgz",
-  "_shasum": "5289b1257cac944f0107a6b055d49d33297d7d2f",
+  "_resolved": "file:../d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
+  "_shasum": "52d8c7ae83f7a165c55ea8b780f558f79e562f9d",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/d-1171016-82473-uveyp4/package.tgz",
-  "_where": "/private/var/folders/1y/zm418q_90g9fz9zykddwv6q00000gn/T/apm-install-dir-1171016-82473-11kdlld",
+  "_spec": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/d-118210-2030-1x88hj.oldez2rzfr/package.tgz",
+  "_where": "/private/var/folders/sh/l4m_l5vj6836djljg39_67_40000gn/T/apm-install-dir-118210-2030-14wr0m5.6rc2384cxr",
   "activationCommands": {
     "atom-text-editor": [
       "go-to-line:toggle"
@@ -75,5 +74,5 @@
       "spec/fixtures"
     ]
   },
-  "version": "0.32.1"
+  "version": "0.33.0"
 }
