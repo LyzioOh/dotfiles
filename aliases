@@ -75,7 +75,7 @@ alias g-p-pr-ch-pl='git push -u origin HEAD && hub pull-request && git checkout 
 ##
 ## Zsh
 alias  czsh='atom ~/.zshrc'
-alias  ca='atom ~/.aliases'
+alias  ca='atom ~/.aliases' 
 alias  rzsh='exec zsh'
 alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias \|##'"
 alias  gcdf="git -C ~/eetancelin/dotfiles commit .  "
