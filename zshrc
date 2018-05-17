@@ -35,13 +35,8 @@ export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 
 # NVM and RVM
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 export PATH="$PATH:$HOME/Library/Python/2.7/bin/"
 
-#Add rvm starting script
-source ~/.rvm/scripts/rvm
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -51,5 +46,16 @@ export PATH="$PATH :./node_modules/.bin"
 export EDITOR='vim'
 export EETANCELIN="$HOME/code/eetancelin"
 export MAILOOP="$HOME/code/mailoop"
-export PATH="$PATH :$MAILOOP/scripts"
+source "${MAILOOP}/dotfiles/.zshrc"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
+#Go
+export GOPATH=$HOME/go
+export PATH="$PATH:/usr/local/go/bin"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/edouardetancelin/code/mailoop/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/edouardetancelin/code/mailoop/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/edouardetancelin/code/mailoop/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/edouardetancelin/code/mailoop/node_modules/tabtab/.completions/sls.zsh
