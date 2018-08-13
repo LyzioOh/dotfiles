@@ -37,8 +37,9 @@ alias  cd-mlf='cd ~/eetancelin/mailoop-g/mailoop-feedback'
 alias  cd-mld='cd ~/eetancelin/mailoop-g/mailoop-deconnexion'
 alias  cd-sb='cd $MAILOOP/sandbox'
 
-## atom
+## Editor
 alias  atm='atom -a'
+alias vs='code -a'
 
 ## Yarn and Webpack
 alias wds='webpack-dev-server'
@@ -76,12 +77,18 @@ alias g-p-pr-ch-pl='git push -u origin HEAD && hub pull-request && git checkout 
 ##
 ## Zsh
 alias  czsh='atom ~/.zshrc'
-alias  ca='atom ~/.aliases'
+alias  ca='code -a ~/.aliases'
+alias  cfg-h='sudo code -a /etc/hosts'
+alias  chosts='sudo code -a /etc/hosts'
 alias  rzsh='exec zsh'
-alias  pa="cat ~/eetancelin/dotfiles/zshrc | grep 'alias \|##'"
+alias  pa="cat rzsh~/code/eetancelin/dotfiles/aliases | grep 'alias \|##'"
 alias  gcdf="git -C ~/eetancelin/dotfiles commit .  "
 alias  gsdf="git -C ~/eetancelin/dotfiles status "
 alias  gpdf="git -C ~/eetancelin/dotfiles push "
+
+# Docker
+alias dck="docker"
+alias dck-c="docker-compose"
 
 ##
 ## Other
@@ -89,6 +96,7 @@ alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butter
 alias  rsl='touch -f ~/Téléchargements/rails.log && rails s > ~/Téléchargements/rails.log & google-chrome /home/doudou/Téléchargements/rails.log'
 alias  ct='rm -r -f ~/Downloads/*'
 alias p-path='echo $PATH | tr : \\n'
+alias 'ml-bm'='/Users/edouardetancelin/code/eetancelin/browser-bookmark-manager/dist/bin/bbm.js'
 
 alias aws="$HOME/Library/Python/2.7/bin/aws"
 

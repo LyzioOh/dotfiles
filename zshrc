@@ -44,6 +44,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH : « yarn global bin  »"
 export PATH="$PATH :./node_modules/.bin"
 export EDITOR='vim'
+export MAILOOP_DOCS='/Users/edouardetancelin/Wellbee/all - Documents/Mailoop'
 export EETANCELIN="$HOME/code/eetancelin"
 export MAILOOP="$HOME/code/mailoop"
 source "${MAILOOP}/dotfiles/.zshrc"
@@ -52,6 +53,10 @@ export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bi
 #Go
 export GOPATH=$HOME/go
 export PATH="$PATH:/usr/local/go/bin"
+
+# Docker AutoCompletion
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
