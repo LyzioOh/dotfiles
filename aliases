@@ -16,8 +16,7 @@ alias  fs='foreman start -f Procfile.dev'
 alias  rc='rails console'
 alias  bi='bundle install'
 alias  rsf='ps aux | grep puma'
-## Clean Postgree
-alias clean-ps='rm -r -f /usr/local/var/postgres/postmaster.pid'
+alias  sp-rspec='spring rspec'
 
 ##
 alias  cl-dd="ls ~/Downloads | rm -r -f"
@@ -76,7 +75,7 @@ alias g-p-pr-ch-pl='git push -u origin HEAD && hub pull-request && git checkout 
 
 ##
 ## Zsh
-alias  czsh='atom ~/.zshrc'
+alias  czsh='code -a ~/.zshrc'
 alias  ca='code -a ~/.aliases'
 alias  cfg-h='sudo code -a /etc/hosts'
 alias  chosts='sudo code -a /etc/hosts'
