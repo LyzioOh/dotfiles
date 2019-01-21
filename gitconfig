@@ -11,7 +11,7 @@
 
 [core]
 	pager = cat
-	editor = 'vim'
+	editor = nano
 
 [alias]
   co = checkout

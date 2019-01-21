@@ -4,12 +4,14 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
 # Quickly serve the current directory as HTTP
-alias serve='ruby -run -e httpd . -p 8000'  # Or python -m SimpleHTTPServer :)
+#alias serve='ruby -run -e httpd . -p 8000'  # Or python -m SimpleHTTPServer :)
+
+#shell
+alias path='echo $PATH | tr : \\n'
+
 
 ##
 ## Rails
-alias  rdbdcms='rails db:drop && rails db:create && rails db:migrate && rails db:seed'
-alias  rdbm='rails db:migrate'
 alias  rs='rails s'
 alias  rr='rails routes'
 alias  fs='foreman start -f Procfile.dev'
@@ -35,10 +37,6 @@ alias  cd-ml='cd ~/code/mailoop'
 alias  cd-mlf='cd ~/eetancelin/mailoop-g/mailoop-feedback'
 alias  cd-mld='cd ~/eetancelin/mailoop-g/mailoop-deconnexion'
 alias  cd-sb='cd $MAILOOP/sandbox'
-
-## Editor
-alias  atm='atom -a'
-alias vs='code -a'
 
 ## Yarn and Webpack
 alias wds='webpack-dev-server'

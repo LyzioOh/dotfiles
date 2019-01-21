@@ -48,7 +48,7 @@ export EDITOR='vim'
 export MAILOOP_DOCS='/Users/edouardetancelin/Wellbee/all - Documents/Mailoop'
 export EETANCELIN="$HOME/code/eetancelin"
 export MAILOOP="$HOME/code/mailoop"
-source "${MAILOOP}/dotfiles/.zshrc"
+#source "${MAILOOP}/dotfiles/.zshrc"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 
 #Go
@@ -92,4 +92,3 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc
