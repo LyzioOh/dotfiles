@@ -52,10 +52,9 @@ alias  gstl='git stash list'
 alias  gstd='git stash drop'
 alias  gsta='git stash apply'
 alias  gaa='git add .'
-alias  gca='git commit . && git lg -5 && git push'
-alias  gaca='git add . && git commit .'
-alias  gd='git --no-pager diff'
-alias  gc.='git checkout .'
+alias  gca='git commit .'
+
+alias  gd='git --ignore-space-change --no-pager diff'
 alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push '
 alias  gcmp='git checkout master && git pull'
 alias  grh1= 'git reset --hard HEAD^1'
@@ -69,7 +68,7 @@ alias g-sup="git push -u origin HEAD"
 alias h-pr='hub pull-request'
 
 #Git Push Pr and Checkmout Master
-alias g-p-pr-ch-pl='git push -u origin HEAD && hub pull-request && git checkout master && git pull'
+alias hub-pr-on-staging='hub pull-request -b staging'
 
 ##
 ## Zsh

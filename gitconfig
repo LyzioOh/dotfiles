@@ -11,7 +11,7 @@
 
 [core]
 	pager = cat
-	editor = nano
+	editor = nano -w
 
 [alias]
   co = checkout
