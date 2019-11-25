@@ -45,7 +45,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH : « yarn global bin  »"
 export PATH="$PATH :./node_modules/.bin"
 export EDITOR='vim'
-export MAILOOP_DOCS='/Users/edouardetancelin/Wellbee/all - Documents/Mailoop'
+export MAILOOP_DOCS='/Users/edouardetancelin/Wellbee/mailoop - Mailoop'
 export EETANCELIN="$HOME/code/eetancelin"
 export MAILOOP="$HOME/code/mailoop"
 #source "${MAILOOP}/dotfiles/.zshrc"
@@ -91,4 +91,6 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
+
+add-zsh-hook chpwd load-nvmrc# fnm
+eval "$(fnm env --multi)"
