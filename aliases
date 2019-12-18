@@ -1,68 +1,46 @@
-# Get External IP / local IPs
-alias ip="curl ipinfo.io/ip"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
 # Quickly serve the current directory as HTTP
-#alias serve='ruby -run -e httpd . -p 8000'  # Or python -m SimpleHTTPServer :)
 
 #shell
 alias path='echo $PATH | tr : \\n'
-
+alias p-path='echo $PATH | tr : \\n'
 
 ##
 ## Rails
-alias  rs='rails s'
-alias  rr='rails routes'
-alias  fs='foreman start -f Procfile.dev'
 alias  rc='rails console'
 alias  bi='bundle install'
-alias  rsf='ps aux | grep puma'
-alias  sp-rspec='spring rspec'
+alias  r-pid='ps aux | grep puma'
+
+## TDD
+
+alias of='spring rspec --only-failures'
 
 ##
-alias  cl-dd="ls ~/Downloads | rm -r -f"
 ## Directory
 alias  cd-ee='cd ~/eetancelin'
-alias  cd-gr='cd $(git rev-parse --show-cdup)' #cd git root
 alias  cd-d='cd ~/Downloads'
 alias  cd-df='cd ~/eetancelin/dotfiles' #cd dotfiles
-alias  cd-bf='cd ~/eetancelin/Bookmark-Finder-Global/bookmark-finder-webpack'
-alias  cd-di-ui='cd ~/eetancelin/data-impact/ui/'
 alias  cd-drafts='cd ~/eetancelin/drafts'
 alias  cd-tt='cd ~/eetancelin/Technical-test'
 alias  cd-ss='cd ~/eetancelin/stylesheets'
 alias  cd-mlr='cd ~/eetancelin/mailoop-g/mailoop'
 alias  cd-ml='cd ~/code/mailoop'
-alias  cd-mlf='cd ~/eetancelin/mailoop-g/mailoop-feedback'
-alias  cd-mld='cd ~/eetancelin/mailoop-g/mailoop-deconnexion'
-alias  cd-sb='cd $MAILOOP/sandbox'
 
 ## Yarn and Webpack
-alias wds='webpack-dev-server'
 alias yi='yarn install'
 alias ys='yarn start'
-alias loc-wp='./node_modules/webpack/bin/webpack.js'
 alias yr='yarn run'
 
+##
 ## Git command
 alias  gs='echo ""; echo "Git Status"; git status -s ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
 alias  gst='git stash'
-alias  gstl='git stash list'
-alias  gstd='git stash drop'
-alias  gsta='git stash apply'
+alias   st-pop= 'git stash pop'
 alias  gaa='git add .'
 alias  gca='git commit .'
+alias  gc='git commit -m'
 
-alias  gd='git diff -w'
-alias  gcp-zshrc='git commit zshrc -m 'zshrc improving' && git push '
-alias  gcmp='git checkout master && git pull'
-alias  grh1= 'git reset --hard HEAD^1'
-alias  git-count= 'git count-objects -vH'
-alias  git-lc='git diff HEAD^'
-alias  g-dmb='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 # Git Set upstream and Push
-alias g-sup="git push -u origin HEAD"
+alias g-sup="git push -u --no-verify origin HEAD"
 
 #Hub
 alias h-pr='hub pull-request'
@@ -77,7 +55,7 @@ alias  ca='code -a ~/.aliases'
 alias  cfg-h='sudo code -a /etc/hosts'
 alias  chosts='sudo code -a /etc/hosts'
 alias  rzsh='exec zsh'
-alias  pa="cat rzsh~/code/eetancelin/dotfiles/aliases | grep 'alias \|##'"
+alias  pa="cat ~/code/eetancelin/dotfiles/aliases | grep 'alias \|##'"
 alias  gcdf="git -C ~/eetancelin/dotfiles commit .  "
 alias  gsdf="git -C ~/eetancelin/dotfiles status "
 alias  gpdf="git -C ~/eetancelin/dotfiles push "
@@ -88,14 +66,8 @@ alias dck-c="docker-compose"
 
 ##
 ## Other
-alias  bs='cd ~ && nohup google-chrome https://127.0.0.1:57575/ && nohup  butterfly.server.py | exit'
-alias  rsl='touch -f ~/Téléchargements/rails.log && rails s > ~/Téléchargements/rails.log & google-chrome /home/doudou/Téléchargements/rails.log'
 alias  ct='rm -r -f ~/Downloads/*'
-alias p-path='echo $PATH | tr : \\n'
 alias 'ml-bm'='/Users/edouardetancelin/code/eetancelin/browser-bookmark-manager/dist/bin/bbm.js'
 
 alias aws="$HOME/Library/Python/2.7/bin/aws"
 
-##
-## Tmux
-alias p-tmux='cat ~/eetancelin/dotfiles/tmux.txt'

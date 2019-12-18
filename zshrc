@@ -94,3 +94,4 @@ load-nvmrc() {
 
 add-zsh-hook chpwd load-nvmrc# fnm
 eval "$(fnm env --multi)"
+export TDD=true
