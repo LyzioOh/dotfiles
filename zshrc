@@ -92,6 +92,9 @@ load-nvmrc() {
   fi
 }
 
+### Define nano as default git
+git config --global core.editor nano
+
 add-zsh-hook chpwd load-nvmrc# fnm
 eval "$(fnm env --multi)"
 export TDD=true
