@@ -95,3 +95,4 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc# fnm
 eval "$(fnm env --multi)"
 export TDD=true
+export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"

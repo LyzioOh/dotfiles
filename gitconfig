@@ -11,7 +11,7 @@
 
 [core]
 	pager = cat
-	editor = nano -w
+	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
 
 [alias]
   co = checkout
@@ -57,8 +57,8 @@
 [branch "master"]
   mergeoptions = --no-edit
 [user]
-	email = etancelin.edouard@gmail.com
-	name = Edouard
+	email = edouard.etancelin@gmail.com
+	name = lyzio etancelin
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 [filter "lfs"]
