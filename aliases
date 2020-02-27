@@ -12,6 +12,7 @@ alias  r-pid='ps aux | grep puma'
 
 ## TDD
 
+alias db:test:migrate='export RAILS_ENV=test && rake db:migrate && unset RAILS_ENV'
 alias of='spring rspec --only-failures'
 
 ##

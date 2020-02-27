@@ -5,9 +5,6 @@ ZSH=$HOME/.oh-my-zsh
 #   https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 ZSH_THEME="robbyrussell"
 
-# Useful plugins for Rails development with Sublime Text
-plugins=(gitfast last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search)
-
 # Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -38,21 +35,18 @@ export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1"
 # NVM and RVM
 export PATH="$PATH:$HOME/Library/Python/2.7/bin/"
 
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export PATH="$PATH : « yarn global bin  »"
 export PATH="$PATH :./node_modules/.bin"
-export EDITOR='vim'
+export EDITOR='nano'
 export MAILOOP_DOCS='/Users/edouardetancelin/Wellbee/mailoop - Mailoop'
-export EETANCELIN="$HOME/code/eetancelin"
 export MAILOOP="$HOME/code/mailoop"
 #source "${MAILOOP}/dotfiles/.zshrc"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 
 #Go
-export GOPATH=$HOME/go
 export PATH="$PATH:/usr/local/go/bin"
 
 # Docker AutoCompletion
@@ -93,9 +87,7 @@ load-nvmrc() {
 }
 
 ### Define nano as default git
-git config --global core.editor nano
 
 add-zsh-hook chpwd load-nvmrc# fnm
 eval "$(fnm env --multi)"
 export TDD=true
-export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
