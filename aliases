@@ -35,10 +35,12 @@ alias yr='yarn run'
 ## Git command
 alias  gs='echo ""; echo "Git Status"; git status -s ; echo ""; echo "Stash List" ; git stash list; echo ""; echo "Eslint" ; eslint ./src  | grep ✖'
 alias  gst='git stash'
-alias   st-pop= 'git stash pop'
+alias  st-pop= 'git stash pop'
 alias  gaa='git add .'
 alias  gca='git commit .'
 alias  gc='git commit -m'
+alias  gp='git push'
+
 
 # Git Set upstream and Push
 alias g-sup="git push -u --no-verify origin HEAD"
@@ -72,3 +74,4 @@ alias 'ml-bm'='/Users/edouardetancelin/code/eetancelin/browser-bookmark-manager/
 
 alias aws="$HOME/Library/Python/2.7/bin/aws"
 
+alias coucou="salut"

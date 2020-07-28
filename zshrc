@@ -46,6 +46,8 @@ export MAILOOP="$HOME/code/mailoop"
 #source "${MAILOOP}/dotfiles/.zshrc"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 
+export FIREFOX="/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox"
+
 #Go
 export PATH="$PATH:/usr/local/go/bin"
 
@@ -92,3 +94,6 @@ add-zsh-hook chpwd load-nvmrc# fnm
 eval "$(fnm env --multi)"
 export TDD=true
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"

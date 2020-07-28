@@ -11,7 +11,7 @@
 
 [core]
 	pager = cat
-	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
+	editor = nano
 
 [alias]
   co = checkout
@@ -28,7 +28,7 @@
   sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
 
   # http://www.jukie.net/bart/blog/pimping-out-git-log
-  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%as) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
 
   # Serve local repo. http://coderwall.com/p/eybtga
   # Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
