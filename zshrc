@@ -97,3 +97,5 @@ export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bi
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
+export TEST_ENV_NUMBER='3'
+export PAGER=cat

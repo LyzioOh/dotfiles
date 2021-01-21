@@ -10,8 +10,9 @@
   remote = yellow
 
 [core]
-	pager = cat
+	pager = diff-so-fancy
 	editor = nano
+	whitespace = cr-at-eol
 
 [alias]
   co = checkout
