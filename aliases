@@ -37,7 +37,7 @@ alias  gs='git_status'
 alias  gst='git stash'
 alias  st-pop= 'git stash pop'
 alias  gaa='git add .'
-alias  gca='git commit .'
+alias  gca='git commit -m "commit"
 alias  gc='git commit -m'
 alias  gp='git push'
 
