@@ -11,7 +11,7 @@
 
 [core]
 	pager = diff-so-fancy
-	editor = nano
+	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
 	whitespace = cr-at-eol
 
 [alias]
@@ -55,7 +55,7 @@
 [branch "master"]
   mergeoptions = --no-edit
 [user]
-	email = etancelin.edouard@gmail.com
+	email = edouard.etancelin@gmail.com
 	name = Lyzio Etancelin
 [url "https://github.com/"]
 	insteadOf = git://github.com/
