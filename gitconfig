@@ -46,6 +46,9 @@
   ra = !git r --all
   la = !git l --all
   ds = diff --stat=160,120
+	ac = add .
+	cc = commit .
+	ca = commit
 [help]
   autocorrect = 1
 
