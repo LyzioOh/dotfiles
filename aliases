@@ -15,17 +15,6 @@ alias  r-pid='ps aux | grep puma'
 alias db:test:migrate='export RAILS_ENV=test && rake db:migrate && unset RAILS_ENV'
 alias of='spring rspec --only-failures'
 
-##
-## Directory
-alias  cd-ee='cd ~/eetancelin'
-alias  cd-d='cd ~/Downloads'
-alias  cd-df='cd ~/eetancelin/dotfiles' #cd dotfiles
-alias  cd-drafts='cd ~/eetancelin/drafts'
-alias  cd-tt='cd ~/eetancelin/Technical-test'
-alias  cd-ss='cd ~/eetancelin/stylesheets'
-alias  cd-mlr='cd ~/eetancelin/mailoop-g/mailoop'
-alias  cd-ml='cd ~/code/mailoop'
-
 ## Yarn and Webpack
 alias yi='yarn install'
 alias ys='yarn start'

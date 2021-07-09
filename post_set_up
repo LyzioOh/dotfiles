@@ -3,3 +3,5 @@ git config --global core.editor "nano"
 git config --global alias.ac "add ."
 git config --global alias.cc "commit ."
 git config --global alias.ca "commit"
+brew install git-delta
+gh config set pager 'delta -s'
