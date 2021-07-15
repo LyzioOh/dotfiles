@@ -10,7 +10,6 @@
   remote = yellow
 
 [core]
-	pager = diff-so-fancy
 	editor = nano
 	whitespace = cr-at-eol
 
@@ -67,3 +66,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = false

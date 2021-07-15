@@ -3,5 +3,8 @@ git config --global core.editor "nano"
 git config --global alias.ac "add ."
 git config --global alias.cc "commit ."
 git config --global alias.ca "commit"
+gem remove hub
+brew install hub
 brew install git-delta
 gh config set pager 'delta -s'
+git config --global pull.rebase false
