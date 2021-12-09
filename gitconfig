@@ -10,7 +10,7 @@
   remote = yellow
 
 [core]
-	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
+	editor = nano
 	whitespace = cr-at-eol
 
 [alias]

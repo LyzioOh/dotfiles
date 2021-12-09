@@ -104,3 +104,9 @@ export PAGER=cat
 
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
+# simulates iTerm i386 within VSCode Integrated Terminal
+if [[ $TERM_PROGRAM == "vscode" ]] && [[ $(arch) == "arm64" ]];
+then
+  exec arch -x86_64 $SHELL
+fi
