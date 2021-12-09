@@ -10,7 +10,7 @@
   remote = yellow
 
 [core]
-	editor = nano
+	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
 	whitespace = cr-at-eol
 
 [alias]
@@ -57,8 +57,8 @@
 [branch "master"]
   mergeoptions = --no-edit
 [user]
-	email = edouard.etancelin@gmail.com
-	name = Lyzio Etancelin
+	email = etancelin.edouard@gmail.com
+	name = Etancelin Edouard
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 [filter "lfs"]

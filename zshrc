@@ -103,3 +103,4 @@ export GITHUB_PERSONNAL_TOKEN="ea05a163b76c71a5e02dbc088396d1809ea7fa33"
 export PAGER=cat
 
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
