@@ -109,4 +109,4 @@ export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bi
 if [[ $TERM_PROGRAM == "vscode" ]] && [[ $(arch) == "arm64" ]];
 then
   exec arch -x86_64 $SHELL
-fi
+fiexport BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
