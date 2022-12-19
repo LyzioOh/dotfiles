@@ -10,7 +10,6 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # Actually load Oh-My-Zsh
 source "${ZSH}/oh-my-zsh.sh"
-unalias rm # No interactive rm by default (brought by plugins/common-aliases)
 
 # Load rbenv if installed
 export PATH="${HOME}/.rbenv/bin:${PATH}"
@@ -91,7 +90,6 @@ load-nvmrc() {
 ### Define nano as default git
 
 add-zsh-hook chpwd load-nvmrc# fnm
-eval "$(fnm env --multi)"
 export TDD=true
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 
@@ -110,3 +108,6 @@ if [[ $TERM_PROGRAM == "vscode" ]] && [[ $(arch) == "arm64" ]];
 then
   exec arch -x86_64 $SHELL
 fi
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+export AIRFLOW_HOME="$HOME/code/LyzioOh/app/apache_airflow"
+plugins=(gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search pyenv ssh-agent)
