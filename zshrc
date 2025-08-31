@@ -114,3 +114,5 @@ echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
 export AIRFLOW_HOME="$HOME/code/LyzioOh/app/apache_airflow"
 plugins=(gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search pyenv ssh-agent)
 fiexport BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
+. "/Users/lyzio/.deno/env"
+poetry completions zsh > ~/.zfunc/_poetry
