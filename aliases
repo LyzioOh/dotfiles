@@ -52,6 +52,8 @@ alias  pa="cat ~/code/eetancelin/dotfiles/aliases | grep 'alias \|##'"
 alias  gcdf="git -C ~/eetancelin/dotfiles commit .  "
 alias  gsdf="git -C ~/eetancelin/dotfiles status "
 alias  gpdf="git -C ~/eetancelin/dotfiles push "
+alias  tkc="toolkit-cli"
+
 
 # Docker
 alias dck="docker"
@@ -67,3 +69,5 @@ alias aws="$HOME/Library/Python/2.7/bin/aws"
 alias coucou="salut"
 alias li="gh issue list --limit 10"
 alias oi="open_issue"
+
+alias logrun='(){ $@ 2>&1 | tee -a /tmp/terminal.log; }'

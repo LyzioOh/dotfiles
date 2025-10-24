@@ -12,13 +12,13 @@ export HOMEBREW_NO_ANALYTICS=1
 source "${ZSH}/oh-my-zsh.sh"
 
 # Load rbenv if installed
-export PATH="${HOME}/.rbenv/bin:${PATH}"
+export PATH="${HOME}/.rbenv/bin:${PATH}:/Users/lyzio/.local/pipx/venvs/"
 type -a rbenv > /dev/null && eval "$(rbenv init -)"
 
 # Rails and Ruby uses the local `bin` folder to store binstubs.
 # So instead of running `bin/rails` like the doc says, just run `rails`
 # Same for `./node_modules/.bin` and nodejs
-export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
+export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin:/Users/lyzio/.local/bin'"
 
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
@@ -113,6 +113,25 @@ fi
 echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
 export AIRFLOW_HOME="$HOME/code/LyzioOh/app/apache_airflow"
 plugins=(gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search pyenv ssh-agent)
-fiexport BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
 . "/Users/lyzio/.deno/env"
-poetry completions zsh > ~/.zfunc/_poetry
+poetry completions zsh > ~/.zfunc/_poetryeval "$(pyenv virtualenv-init -)"
+
+# Created by `pipx` on 2025-08-31 12:00:25
+export PATH="$PATH:/Users/lyzio/.local/bin"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/lyzio/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Create a timestamped log file in /tmp
+LOGFILE="/tmp/zsh_$(date +%Y%m%d_%H%M%S).log"
+
+# Function to prepend timestamps to each line
+timestamp_output() {
+  awk '{ print strftime("[%Y-%m-%d %H:%M:%S]"), $0; fflush(); }'
+}
+
+# Redirect all output (stdout + stderr) through tee and timestamp_output
+exec > >(timestamp_output | tee -a "$LOGFILE") 2>&1
+
