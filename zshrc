@@ -135,3 +135,4 @@ timestamp_output() {
 # Redirect all output (stdout + stderr) through tee and timestamp_output
 exec > >(timestamp_output | tee -a "$LOGFILE") 2>&1
 
+export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
